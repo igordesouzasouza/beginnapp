@@ -49,9 +49,8 @@ const produtos = [
       setIsDarkMode((prevMode) => !prevMode);
     };
   
-    // Definindo os estilos baseados no tema
     const containerStyle = isDarkMode
-    ? tw`flex-1 bg-black mt-4`
+    ? tw`flex-1 bg-black mt-`
     : tw`flex-1 bg-gray-100 mt-4`;
   const cardStyle = isDarkMode
     ? tw`flex-row items-center p-4 bg-gray-900 rounded-lg shadow-md mb-2 mx-2`
@@ -64,24 +63,23 @@ const produtos = [
     : tw`text-sm text-gray-600`;
   
     const renderItem = ({ item }) => (
-      <TouchableOpacity
-        style={cardStyle}
-        onPress={() => navigation.navigate("ProductDetail", { produto: item })}
-      >
-        <Image
-          source={{ uri: item.imagem }}
-          style={tw`w-16 h-16 rounded-md mr-4`}
-        />
-        <View style={tw`flex-1`}>
-          <Text style={titleStyle}>{item.nome}</Text>
-          <Text style={priceStyle}>R$ {item.preco.toFixed(2)}</Text>
-        </View>
-      </TouchableOpacity>
-    );
+        <TouchableOpacity
+          style={cardStyle}
+          onPress={() => navigation.navigate("ProductDetail", { produto: item, isDarkMode })} //route.params que envia os dados daqui pra lá
+        >
+          <Image
+            source={{ uri: item.imagem }} //colet dados das constantes acima e trás pra cá
+            style={tw`w-16 h-16 rounded-md mr-4`}
+          />
+          <View style={tw`flex-1`}>
+            <Text style={titleStyle}>{item.nome}</Text>
+            <Text style={priceStyle}>R$ {item.preco.toFixed(2)}</Text>
+          </View>
+        </TouchableOpacity>
+      );    
   
     return (
       <View style={containerStyle}>
-        {/* Switch para alternar o tema */}
         <View style={tw`p-4 flex-row justify-end`}>
           
         </View>

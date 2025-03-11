@@ -3,17 +3,30 @@ import { View, Text, Image } from "react-native";
 import tw from "twrnc";
 
 export default function ProductDetailScreen({ route }) {
-  const { produto } = route.params;
+  const { produto, isDarkMode } = route.params; //receptar de dados da pagina de produtos 
+
+  const containerStyle = isDarkMode
+    ? tw`flex-1 bg-gray-900 p-4`
+    : tw`flex-1 bg-gray-100 p-4`;
+  const titleStyle = isDarkMode
+    ? tw`text-2xl font-bold text-white mb-2`
+    : tw`text-2xl font-bold text-black mb-2`;
+  const priceStyle = isDarkMode
+    ? tw`text-lg text-white mb-4`
+    : tw`text-lg text-gray-600 mb-4`;
+  const descriptionStyle = isDarkMode
+    ? tw`text-base text-white`
+    : tw`text-base text-gray-700`;
 
   return (
-    <View style={tw`flex-1 bg-gray-100 p-4`}>
+    <View style={containerStyle}>
       <Image
         source={{ uri: produto.imagem }}
         style={tw`w-full h-64 rounded-lg mb-4`}
       />
-      <Text style={tw`text-2xl font-bold text-gray-800 mb-2`}>{produto.nome}</Text>
-      <Text style={tw`text-lg text-gray-600 mb-4`}>R$ {produto.preco.toFixed(2)}</Text>
-      <Text style={tw`text-base text-gray-700`}>{produto.descricao}</Text>
+      <Text style={titleStyle}>{produto.nome}</Text>
+      <Text style={priceStyle}>R$ {produto.preco.toFixed(2)}</Text>
+      <Text style={descriptionStyle}>{produto.descricao}</Text>
     </View>
   );
 }

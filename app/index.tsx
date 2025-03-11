@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 
 export default function Index() {
   return (
-    <Stack.Navigator initialRouteName="ProductList">
+    <Stack.Navigator initialRouteName="ProductList" >
       <Stack.Screen
         name="ProductList"
         component={ProductListScreen}
