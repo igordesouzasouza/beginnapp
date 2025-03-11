@@ -71,7 +71,7 @@ const produtos = [
             source={{ uri: item.imagem }} //colet dados das constantes acima e trás pra cá
             style={tw`w-16 h-16 rounded-md mr-4`}
           />
-          <View style={tw`flex-1`}>
+          <View style={tw`flex-1`}> 
             <Text style={titleStyle}>{item.nome}</Text>
             <Text style={priceStyle}>R$ {item.preco.toFixed(2)}</Text>
           </View>
